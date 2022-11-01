@@ -1,10 +1,15 @@
 
 package com.mycompany.pelucanina.Interface;
 
+import com.mycompany.pelucanina.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 
 public class CargarDatos extends javax.swing.JFrame {
 
-   
+    Controladora control = new Controladora();
+            
     public CargarDatos() {
         initComponents();
     }
@@ -280,7 +285,28 @@ public class CargarDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbAlergicoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        
+              String nombreMasco = txtNombre.getText();
+              String color =  txtColor.getText();
+              String raza = txtRaza.getText();
+                   
+              String celDuenio = txtCelDuenio.getText();
+              String nombreDuenio =  txtNombreDuenio.getText();
+                   
+              String observaciones =  txtObservaciones.getText();
+              String alergico = (String) cmbAlergico.getSelectedItem();
+              String atenEspe = (String) cmbAtencionEspecial.getSelectedItem();
+        
+        
+        control.guardar(nombreMasco, color, raza, celDuenio, nombreDuenio, observaciones, alergico, atenEspe);
+        
+        
+        JOptionPane optionPane = new JOptionPane("Se guardo correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
