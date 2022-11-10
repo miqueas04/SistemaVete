@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class CargarDatos extends javax.swing.JFrame {
 
-    Controladora control = new Controladora();
+    Controladora controler = new Controladora();
             
     public CargarDatos() {
         initComponents();
@@ -298,7 +298,7 @@ public class CargarDatos extends javax.swing.JFrame {
               String atenEspe = (String) cmbAtencionEspecial.getSelectedItem();
         
         
-        control.guardar(nombreMasco, color, raza, celDuenio, nombreDuenio, observaciones, alergico, atenEspe);
+        controler.guardar(nombreMasco, color, raza, celDuenio, nombreDuenio, observaciones, alergico, atenEspe);
         
         
         JOptionPane optionPane = new JOptionPane("Se guardo correctamente");

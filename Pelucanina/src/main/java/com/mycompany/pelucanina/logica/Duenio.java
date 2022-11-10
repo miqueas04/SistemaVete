@@ -38,7 +38,7 @@ public class Duenio implements Serializable {
         this.id_duenio = id_duenio;
     }
 
-    public String getCel_duenio() {
+    public Object getCel_duenio() {
         return celDuenio;
     }
 
@@ -46,7 +46,7 @@ public class Duenio implements Serializable {
         this.celDuenio = cel_duenio;
     }
 
-    public String getNombre() {
+    public Object getNombre() {
         return nombre;
     }
 

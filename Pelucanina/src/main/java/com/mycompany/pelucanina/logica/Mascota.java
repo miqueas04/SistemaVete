@@ -44,7 +44,7 @@ public class Mascota implements Serializable {
     
     //Getters and Setters
 
-    public int getNum_cliente() {
+    public Object getNum_cliente() {
         return num_cliente;
     }
 
@@ -52,7 +52,7 @@ public class Mascota implements Serializable {
         this.num_cliente = num_cliente;
     }
 
-    public String getNombre() {
+    public Object getNombre() {
         return nombre;
     }
 
@@ -60,7 +60,7 @@ public class Mascota implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getRaza() {
+    public Object getRaza() {
         return raza;
     }
 
@@ -68,7 +68,7 @@ public class Mascota implements Serializable {
         this.raza = raza;
     }
 
-    public String getColor() {
+    public Object getColor() {
         return color;
     }
 
@@ -76,7 +76,7 @@ public class Mascota implements Serializable {
         this.color = color;
     }
 
-    public String getAlergico() {
+    public Object getAlergico() {
         return alergico;
     }
 
@@ -84,7 +84,7 @@ public class Mascota implements Serializable {
         this.alergico = alergico;
     }
 
-    public String getAtencion_especial() {
+    public Object getAtencion_especial() {
         return atencion_especial;
     }
 

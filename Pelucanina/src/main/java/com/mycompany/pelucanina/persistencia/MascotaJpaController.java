@@ -3,15 +3,12 @@ package com.mycompany.pelucanina.persistencia;
 
 import com.mycompany.pelucanina.logica.Mascota;
 import com.mycompany.pelucanina.persistencia.exceptions.NonexistentEntityException;
-import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
+
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.io.Serializable;
+import java.util.List;
 
 public class MascotaJpaController implements Serializable {
 
@@ -53,7 +50,7 @@ public class MascotaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = mascota.getNum_cliente();
+                int id = (int) mascota.getNum_cliente();
                 if (findMascota(id) == null) {
                     throw new NonexistentEntityException("The mascota with id " + id + " no longer exists.");
                 }

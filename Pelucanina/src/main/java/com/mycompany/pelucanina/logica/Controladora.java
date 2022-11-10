@@ -2,6 +2,7 @@
 package com.mycompany.pelucanina.logica;
 
 import com.mycompany.pelucanina.persistencia.ControladoraPersistencia;
+import java.util.List;
 
 
 public class Controladora {
@@ -33,6 +34,13 @@ public class Controladora {
         controlPersis.guardad(duenio, masco);
         
     }
+
+    public List<Mascota> traerMascotas() {
+       
+       return controlPersis.traerMascotas();
+    }
+
+    
      
     
     
