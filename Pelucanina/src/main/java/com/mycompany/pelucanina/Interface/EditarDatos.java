@@ -313,6 +313,12 @@ public class EditarDatos extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
         
+        VerDatos pantalla = new VerDatos();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        
+        this.dispose();
+       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed

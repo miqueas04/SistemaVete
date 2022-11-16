@@ -205,7 +205,7 @@ public class VerDatos extends javax.swing.JFrame {
          EditarDatos pantallaModif = new EditarDatos(num_cliente);
          pantallaModif.setVisible(true);
          pantallaModif.setLocationRelativeTo(null);
-             
+         this.dispose();
          
          
          }
@@ -250,7 +250,7 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JTable tablaMascotas;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarTabla() {
+    public void cargarTabla() {
        //Definimos el modelos que queremos que tenga la tabla 
      DefaultTableModel modeloTabla = new DefaultTableModel(){
         
