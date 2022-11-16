@@ -3,9 +3,14 @@ package com.mycompany.pelucanina.Interface;
 
 import com.mycompany.pelucanina.logica.Controladora;
 import com.mycompany.pelucanina.logica.Mascota;
+import com.mycompany.pelucanina.persistencia.exceptions.NonexistentEntityException;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 public class VerDatos extends javax.swing.JFrame {
@@ -65,8 +70,18 @@ public class VerDatos extends javax.swing.JFrame {
         jLabel2.setText("Datos de mascotas:");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,10 +165,79 @@ public class VerDatos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       //comprobamos que las columnas no este vacias y que haya una selecionada
+        if(tablaMascotas.getRowCount() > 0){
+         if(tablaMascotas.getSelectedRow()!=-1){
+             //Obtengo la id de la mascota a eliminar 
+         int num_cliente = Integer.parseInt(String.valueOf(tablaMascotas.getValueAt(tablaMascotas.getSelectedRow(), 0)));
+             try {
+                 //Llamo al metodo borrar
+                 control.borrarMascota(num_cliente);
+             } catch (NonexistentEntityException ex) {
+                 Logger.getLogger(VerDatos.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+         //Aviso al operador 
+         
+         mostrarMensaje("Mascota eliminada", "info", "Borrado exitoso");
+         
+         
+         }
+            else {        
+         mostrarMensaje("No a seleccionado ninguna mascota", "error", "seleccione mascota para poder eliminar!");
+                 }
+        }
+      else {        
+         mostrarMensaje("No a hay nada para eliminar en la tabla", "error", "error al eliminar!");
+                 }
+        
+     cargarTabla();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+        if(tablaMascotas.getRowCount() > 0){
+         if(tablaMascotas.getSelectedRow()!=-1){
+             //Obtengo la id de la mascota a editar
+         int num_cliente = Integer.parseInt(String.valueOf(tablaMascotas.getValueAt(tablaMascotas.getSelectedRow(), 0)));
+             
+         EditarDatos pantallaModif = new EditarDatos(num_cliente);
+         pantallaModif.setVisible(true);
+         pantallaModif.setLocationRelativeTo(null);
+             
+         
+         
+         }
+             
+             
+           else {        
+         mostrarMensaje("No a seleccionado ninguna mascota", "error", "seleccione mascota para poder eliminar!");
+                 }
+        }
+      else {        
+         mostrarMensaje("No a hay nada para eliminar en la tabla", "error", "error al eliminar!");
+                 }
+        
+        
+       
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
     
+    JOptionPane optionPane = new JOptionPane(mensaje);
+    if(tipo.equals("info")){
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);}
+    else if(tipo.equals("error")) {
+    optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+    
+    }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
